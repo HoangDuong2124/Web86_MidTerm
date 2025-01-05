@@ -3,7 +3,7 @@ import UserModel from "../models/user.js";
 export const authPutMiddleware = async (req, res, next) => {
   try {
     const apiKey = req.query.apiKey;
-    if (!apiKey) throw new Error("Thiếu apiKey trên Param");
+    if (!apiKey) return res.status(403).json({ error: "Thiếu apiKey" });
     const user = await UserModel.findOne({ apiKey });
     if (!user) {
       return res.status(403).json({ error: "apiKey không hợp lệ" });

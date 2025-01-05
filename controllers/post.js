@@ -32,7 +32,7 @@ export const postController = {
       }
       // Tìm bài post trong cơ sở dữ liệu
       const post = await PostModel.findById(postId);
-
+      console.log(post)
       if (!post) {
         return res.status(404).json({ error: "Bài post không tồn tại" });
       }
